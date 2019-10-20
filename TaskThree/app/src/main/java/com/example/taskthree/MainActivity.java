@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    int clickCount;
     Button btnClick;
     ImageView imageView1, imageView2, imageView3, imageView4;
 
@@ -28,12 +29,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnClick:
-                imageView1.setImageResource(R.drawable.bird);
+        clickCount = clickCount + 1;
+        switch (clickCount) {
+            case 1:
+                imageView4.setVisibility(View.INVISIBLE);
                 imageView1.setVisibility(View.VISIBLE);
                 break;
+            case 2:
+                imageView1.setVisibility(View.INVISIBLE);
+                imageView2.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                imageView2.setVisibility(View.INVISIBLE);
+                imageView3.setVisibility(View.VISIBLE);
+                break;
+            case 4:
+                imageView3.setVisibility(View.INVISIBLE);
+                imageView4.setVisibility(View.VISIBLE);
+                break;
+            case 5:
+                imageView4.setVisibility(View.INVISIBLE);
+                imageView1.setVisibility(View.VISIBLE);
+                clickCount = 1;
+                break;
         }
-
     }
+
 }
